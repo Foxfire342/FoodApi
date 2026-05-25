@@ -13,7 +13,7 @@ import { healthRouter } from "./routes/healthRoutes.js";
 
 export function createApp(): Express {
   const app = express();
-
+  app.set("trust proxy", 1);
   // Required behind Vercel's reverse proxy for correct client IPs (rate limiting).
   if (isVercel) {
     app.set("trust proxy", 1);
