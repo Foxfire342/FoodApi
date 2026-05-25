@@ -4,6 +4,7 @@
  */
 import cors from "cors";
 import express, { type Express } from "express";
+import serverless from "serverless-http";
 import { isVercel } from "./config/env.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { foodsRateLimiter, globalRateLimiter } from "./middleware/rateLimiter.js";
@@ -43,3 +44,5 @@ export function createApp(): Express {
 
   return app;
 }
+
+export default serverless(createApp());
